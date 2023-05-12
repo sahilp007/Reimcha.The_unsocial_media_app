@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import React, { useContext } from 'react';
 
 const UserImage = ({ image, size = "60px" }) => {
   return (
