@@ -25,7 +25,7 @@ const FriendListWidget = ({ userId }) => {
 
   useEffect(() => {
     getFriends();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [friends]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <WidgetWrapper>
@@ -37,17 +37,31 @@ const FriendListWidget = ({ userId }) => {
       >
         Friend List
       </Typography>
-      <Box display="flex" flexDirection="column" gap="1.5rem">
-        {friends.map((friend) => (
-          <Friend
-            key={friend._id}
-            friendId={friend._id}
-            name={`${friend.firstName} ${friend.lastName}`}
-            subtitle={friend.occupation}
-            userPicturePath={friend.picturePath}
-          />
-        ))}
-      </Box>
+        {/*<Box display="flex" flexDirection="column" gap="1.5rem">*/}
+        {/*    /!* change the below line to stop throwing error if friends is a string*!/*/}
+        {/*    {friends.map((friend) => (*/}
+        {/*        <Friend*/}
+        {/*            key={friend._id}*/}
+        {/*            friendId={friend._id}*/}
+        {/*            name={`${friend.firstName} ${friend.lastName}`}*/}
+        {/*            subtitle={friend.occupation}*/}
+        {/*            userPicturePath={friend.picturePath}*/}
+        {/*        />*/}
+        {/*    ))}*/}
+        {/*</Box>*/}
+        <Box display="flex" flexDirection="column" gap="1.5rem">
+            {Array.isArray(friends) ? (
+                friends.map((friend) => (
+                    <Friend
+                        key={friend._id}
+                        friendId={friend._id}
+                        name={`${friend.firstName} ${friend.lastName}`}
+                        subtitle={friend.occupation}
+                        userPicturePath={friend.picturePath}
+                    />
+                ))) : (<p>No friends to display.</p>)}
+        </Box>
+
     </WidgetWrapper>
   );
 };
