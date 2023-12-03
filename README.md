@@ -33,6 +33,7 @@ Welcome to Reimcha! A dynamic and interactive chat platform where users can enga
 
 ## For easy login use :-
 
-email- tester1@test
-pass - 123123123
+**mail**- tester1@test
+
+**pass** - 123123123
 
